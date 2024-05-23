@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="base::layout(~{::section})"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="my-card mt-3">
+              <div
+                th:if="${session.message}"
+                th:classappend="${session.message.type}"
+                class="alert"
+                role="alert"
+              >
+                <p class="text-center" th:text="${session.message.content}"></p>
+                <!-- <th:block th:text="${#session.removeAttribute('message')}"></th:block> -->
+              </div>
+              <h2 class="text-center">SignUp</h2>
+              <div class="text-center">
+                <img
+                  style="max-width: 50px"
+                  th:src="@{/image/register.png}"
+                  alt=""
+                />
+              </div>
+              <form novalidate th:action="@{/register}" th:object="${user}" method="post">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Your Name</label>
+                  <input
+                    name="name"
+                    th:value="${user.name}"
+                    type="name"
+                    class="form-control"
+                    th:classappend="${#fields.hasErrors('name')?'is-invalid':''}"
+                    id="name"
+                    placeholder="Enter here"
+                  />
+
+                  <div class="invalid-feedback" th:each="e : ${#fields.errors('name')}" th:text="${e}"></div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="email" class="form-label"
+                    >Your Email address</label
+                  >
+                  <input
+                    name="email"
+                    th:value="${user.email}"
+                    type="email"
+                    class="form-control"
+                    th:classappend="${#fields.hasErrors('email')?'is-invalid':''}"
+                    id="email"
+                    placeholder="Enter here"
+                  />
+                  <div class="invalid-feedback" th:each="e : ${#fields.errors('email')}" th:text="${e}"></div>
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Your Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    th:classappend="${#fields.hasErrors('password')?'is-invalid':''}"
+                    id="password"
+                    placeholder="Enter here"
+                  />
+                  <small class="form-text text-muted">Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.</small>
+                  <div class="invalid-feedback" th:each="e : ${#fields.errors('password')}" th:text="${e}"></div>
+                </div>
+
+                <div class="mb-3">
+                  <textarea
+                    name="about"
+                    th:text="${user.about}"
+                    type="name"
+                    class="form-control"
+                    id="about"
+                    placeholder="Tell us about yourself"
+                    rows="5"
+                  ></textarea>
+                </div>
+
+                <div class="mb-3 form-check">
+                  <input
+                    type="checkbox"
+                    name="agreement"
+                    class="form-check-input"
+                    id="exampleCheck1"
+                  />
+                  <label class="form-check-label" for="exampleCheck1"
+                    >Agree to our Terms & Condition</label
+                  >
+                </div>
+
+                <div class="container text-center">
+                  <button class="btn primary text-white" type="submit">
+                    Submit
+                  </button>
+                  <button class="btn btn-danger" type="reset">Clear</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="base::layout(~{::section})"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="">
+      <div class="container" id="login-form">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="my-card mt-3">
+              <form novalidate th:action="@{/dologin}" method="post">
+                <h3 class="text-center display-5">Login</h3>
+                <div th:if="${message != null}">
+                  <div th:class="'text-center alert alert-' + ${message.type}" th:text="${message.content}" role="alert"></div>
+                </div>
+                <div th:if="${param.error}" class="alert alert-danger">
+                  Invalid username or password
+                </div>
+                <div th:if="${param.logout}" class="alert alert-success">
+                  You have been logged out
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label"
+                    >Your Email address</label
+                  >
+                  <input
+                    name="username"
+                    type="email"
+                    class="form-control"
+                    id="username"
+                    placeholder="Enter here"
+                  />
+                </div>
+                <div class="mb-3" style="position: relative">
+                  <label for="password" class="form-label">Your Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    id="user_password"
+                    placeholder="Enter here"
+                  />
+                  <button
+                    type="button"
+                    id="togglePassword"
+                    class=""
+                    style="
+                      background: #fff;
+                      position: absolute;
+                      top: 55%;
+                      right: 10px;
+                      border: 0px;
+                    "
+                  >
+                    <i id="icon" class="fa-regular fa-eye"></i>
+                  </button>
+                </div>
+                <div class="container text-center">
+                  <button class="btn primary text-white" type="submit">
+                    Login
+                  </button>
+                </div>
+                <div class="mt-3 d-flex justify-content-end">
+                  <a class="me-2 btn btn-outline-primary" th:href="@{/forgot-password}">Forgot Password?</a>
+                  <a class="me-2 btn btn-outline-primary" th:href="@{/signup}">register</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        $(document).ready(function () {
+          let flag = true;
+          $("#togglePassword").on("click", function () {
+            let icon = $("#icon");
+            let passField = $("#user_password");
+
+            if (flag) {
+              icon.removeClass("fa-eye");
+              icon.addClass("fa-eye-slash");
+              passField.attr("type", "text");
+              flag = false;
+            } else {
+              icon.removeClass("fa-eye-slash");
+              icon.addClass("fa-eye");
+              passField.attr("type", "password");
+              flag = true;
+            }
+          });
+        });
+      </script>
+    </section>
+  </body>
+</html>

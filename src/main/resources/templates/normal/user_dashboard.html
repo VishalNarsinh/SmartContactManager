@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Dashboard</title>
+</head>
+
+<body>
+  <section>
+    <div class="container">
+      <div class="card my-4">
+        <div class="card-header">
+          <h1>Welcome <span th:text="${user.name}"></span></h1>
+        </div>
+        <div class="card-body my-3 p-4">
+          <div class="text-center">
+            <img th:src="@{/image/cloud-contact.jpeg}" alt="" style="
+                  width: 200px;
+                  height: 200px;
+                  object-fit: contain;
+                  border-radius: 20%;
+                " />
+          </div>
+          <h1 class="text-center mt-2 text-secondary font-monospace">
+            Start adding your Contacts on Cloud
+          </h1>
+          <!-- <div th:if="${user.contacts.size()==0}"> -->
+
+
+          <div class="d-grid gap-2 mt-3 p-3">
+            <a th:href="@{/user/add-contact}" th:if="${user.contacts.size()==0}" class="btn btn-primary">You have 0
+              Contact, Add your First Contact</a>
+            <a th:href="@{/user/show-contacts/0}" th:if="${user.contacts.size()!=0}" class="btn btn-success">Explore
+              through your Contact List</a>
+            <a th:href="@{/user/add-contact}" th:if="${user.contacts.size()!=0}" class="btn btn-primary">Add More
+              Contact</a>
+          </div>
+
+          <!-- </div> -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="mb-3">Suppot Us</h3>
+              <input id="payment_field" type="text" placeholder="Enter amounnt here" class="form-control">
+              <div class="d-grid gap-2 mt-3">
+                <button class="btn primary text-white" onclick="paymentStart()">Checkout</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        $(".item").removeClass("active");
+        $("#home").addClass("active");
+      });
+    </script>
+  </section>
+</body>
+
+</html>

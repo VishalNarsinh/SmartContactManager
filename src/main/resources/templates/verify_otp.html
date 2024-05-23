@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="base::layout(~{::section})"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="">
+      <div class="container" id="login-form">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="my-card mt-3">
+              
+                <div th:if="${message != null}">
+                  <div th:class="'text-center alert alert-' + ${message.type}" th:text="${message.content}" role="alert"></div>
+                </div>
+              
+              <form th:action="@{/verify-otp}" method="post">
+                <div class="mb-3">
+                  <input
+                    required
+                    type="number"
+                    class="form-control"
+                    name="otp"
+                    id=""
+                    placeholder="Enter your OTP"
+                  />
+                </div>
+                <div class="text-center">
+                  <button class="btn btn-warning">Verify</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

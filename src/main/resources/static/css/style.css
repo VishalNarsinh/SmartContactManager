@@ -1,0 +1,124 @@
+body{
+    background-color: #A0BFE0 !important;
+}
+
+.primary{
+    background: #4A55A2;
+}
+
+.banner{
+    width: 100vw;
+    height: 92.9vh;
+    background:linear-gradient(rgba(0,0,0,.6),rgba(75, 151, 184, 0.6)),url(../image/background.jpg) ;
+    background-size: cover;
+}
+.my-card{
+    padding: 20px;
+    background: #C5DFF8;
+}
+
+#login-form{
+    margin-top: 15vh;
+}
+
+/* .sidebar style */
+
+@media only screen and (max-width: 768px) {
+    .sidebar {
+        text-align: center;
+        display: none;
+        width: 50% !important;
+        background: #C5DFF8;
+        height: 100vh;
+        position: fixed;
+        padding-top: 20px;
+    }
+    .content{
+        margin-left: 1% !important;
+    }
+}
+
+.sidebar{
+    width: 18%;
+    background-color: #C5DFF8;
+    height: 100%;
+    position: fixed;
+    padding-top: 45px;
+    z-index: 99999999999;
+}
+
+
+.sidebar a{
+    display: block;
+    width: 100%;
+    padding: 10px 25px;
+    text-decoration: none;
+    color: #1F2544;
+}
+
+.sidebar a:hover{
+    background-color: #E1F0DA;
+}
+
+.sidebar .divider{
+    height: .5px;
+    width: 100%;
+    background-color: #E1F0DA;
+    margin-top: 10px;
+}
+.content{
+    margin-left: 19%;
+}
+
+.sidebar .crossBtn{
+    position: absolute;
+    top: 0;
+    right: 35px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.content .menuBtn{
+    margin-top: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.contacts_img{
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.contacts_link{
+    text-decoration: none;
+}
+
+.contact_img{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+/* search bar */
+.search-container{
+    position: relative;
+}
+
+
+.search-result{
+    position: absolute;
+    z-index: 999;
+    background-color: white;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid gray;
+    display: none;
+}
+
+.active{
+    background: #4A55A2!important;
+    color: #fff !important;
+}

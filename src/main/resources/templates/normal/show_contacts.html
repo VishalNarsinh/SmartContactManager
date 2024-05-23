@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="normal/base::layout(~{::section})"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Dashboard</title>
+  </head>
+  <body>
+    <section>
+      <div class="card">
+        <div class="card-body" th:if="${contacts.hasContent()}">
+          <h1 class="text-center">Contact List</h1>
+          <div class="search-container my-3">
+            <input
+              onkeyup="search()"
+              placeholder="Search here"
+              id="search-input"
+              type="text"
+              name="search"
+              class="form-control"
+            />
+            <div class="search-result"></div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">#ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+  
+              <tbody>
+                <tr th:each="c : ${contacts}">
+                  <th><span th:text="${c.cId}"></span></th>
+                  <td>
+                    <a
+                      class="contacts_link"
+                      th:href="@{'/user/contact/'+${c.cId}}"
+                    >
+                      <img
+                        class="contacts_img"
+                        th:src="@{'/image/'+${c.image}}"
+                      />
+                      <span th:text="${c.name}"></span>
+                    </a>
+                  </td>
+                  <td><span th:text="${c.email}"></span></td>
+                  <td><span th:text="${c.phone}"></span></td>
+                  <td>
+                    <a class="btn" th:href="@{'/user/update-contact/'+${c.cId}}">
+                      <i class="text-primary fa-solid fa-pen-to-square"></i>
+                    </a>
+                    <a class="btn" th:onclick="|confirmDeletion(${c.cId})|">
+                      <i class="text-danger fa-solid fa-trash"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+
+          <nav
+                th:if="${totalPages > 0}"
+                aria-label="Page navigation example"
+              >
+                <ul class="pagination mt-2">
+                  <li th:if="${currentPage != 0}" class="page-item">
+                    <a
+                      class="page-link"
+                      th:href="@{'/user/show-contacts/'+${currentPage-1}}"
+                      >Previous</a
+                    >
+                  </li>
+                  <li
+                    th:classappend="${currentPage==i-1}? 'active' : '' "
+                    th:each="i : ${#numbers.sequence(1,totalPages)}"
+                    class="page-item"
+                  >
+                    <a
+                      class="page-link"
+                      th:href="@{'/user/show-contacts/'+${i-1}}"
+                      th:text="${i}"
+                    ></a>
+                  </li>
+
+                  <li th:if="${currentPage+1 != totalPages}" class="page-item">
+                    <a
+                      class="page-link"
+                      th:href="@{'/user/show-contacts/'+${currentPage+1}}"
+                      >Next</a
+                    >
+                  </li>
+                </ul>
+              </nav>
+        </div>
+        <div class="card-body" th:unless="${contacts.hasContent()}">
+
+          <h1 class="text-center">You have no contacts</h1>
+        </div>
+      </div>
+      
+      <script>
+        $(document).ready(function(){
+          $(".item").removeClass("active");
+          $("#show-contacts").addClass("active");
+        });
+      </script>
+    </section>
+  </body>
+</html>
