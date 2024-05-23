@@ -1,2 +1,2 @@
-*.java linguistic-detectable=true
-*.html linguistic-detectable=false
+*.java linguist-detectable=true
+*.html linguist-detectable=false
