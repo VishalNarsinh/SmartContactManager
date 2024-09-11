@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}"
+>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+    <div id="content" class="">
+      <div class="grid grid-cols-12 mt-5">
+        <div class="col-span-4 md:col-span-2 lg:col-span-3 xl:col-span-4"></div>
+        <div class="col-span-12 md:col-span-8 lg:col-span-6 xl:col-span-4 mt-5">
+          <div
+            class="block p-6 border-t-green-700 border-t-8 bg-white border border-gray-200 rounded-xl shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-t-green-700 dark:border-x-gray-700 dark:border-b-gray-700 dark:hover:bg-gray-700"
+          >
+            <div th:if="${message != null}">
+              <div
+                th:if="${message.type=='success'}"
+                th:insert="message::messageBoxSuccess"
+              ></div>
+              <div
+                th:if="${message.type=='error'}"
+                th:insert="message::messageBoxError"
+              ></div>
+            </div>
+
+            <h5
+              class="my-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+              Login Here
+            </h5>
+
+            <div class="py-2 px-1" th:if="${param.error}">
+              <span class="text-red-400">Invalid Username or Password</span>
+            </div>
+            <div class="py-2 px-1" th:if="${param.disabled}">
+              <span class="text-red-400">User is disabled, email with verification link is sent to your registered email address </span>
+            </div>
+            <div class="py-2 px-1" th:if="${param.logout}">
+              <span class="text-green-500 dark:text-green-400"
+                >You have been logged out</span
+              >
+            </div>
+            <form
+              th:action="@{'/authenticate'}"
+              method="post"
+              novalidate
+              autocomplete="off"
+            >
+              <div class="my-5">
+                <label
+                  for="email"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Your email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="peterparker@gmail.com"
+                  required
+                />
+              </div>
+
+              <div class="mb-5">
+                <label
+                  for="password"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Your password</label
+                >
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder=""
+                  required
+                />
+              </div>
+
+              <div class="text-center">
+                <button
+                  type="submit"
+                  class="px-3 py-2 rounded-lg bg-gray-800 text-white dark:bg-gray-50 dark:hover:bg-gray-200 dark:text-black"
+                >
+                  Login
+                </button>
+              </div>
+            </form>
+            <div
+              id="social-button-container"
+              class="flex justify-center items-center space-y-4 flex-col mt-5"
+            >
+              <a
+                th:href="@{'/oauth2/authorization/google'}"
+                class="px-4 py-2 border text-center gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150"
+              >
+                <img
+                  class="w-6 h-6 inline"
+                  src="https://www.svgrepo.com/show/475656/google-color.svg"
+                  loading="lazy"
+                />
+                <span>Login with Google</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script></script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}"
+>
+  <head>
+    <title th:text="${user.name} + ' | SCM' "></title>
+  </head>
+  <body>
+    <div id="content">
+      <div th:if="${user}">
+        <div th:replace="~{user/sidebar :: sidebar}"></div>
+      </div>
+      <div class="sm:pl-64 pt-5">
+        <div
+          id="contact_div"
+          class="max-w-2xl text-gray-700 dark:text-gray-400 mx-auto bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden transition-colors duration-300"
+        >
+          <div class="p-4 text-center">
+            <img
+              class="max-h-52 mx-auto rounded-lg shadow m-3 ring-2 ring-fuchsia-500"
+              data-th-src="${user.profilePictureURL}"
+              alt="Profile Picture"
+            />
+            <h2 class="mt-4 text-2xl font-semibold">[[${user.name}]]</h2>
+          </div>
+          <div class="p-4">
+            <p class="text-gray-700 dark:text-gray-300 mb-2">
+              <strong>Email:</strong> [[${user.email}]]
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 mb-2">
+              <strong>About:</strong> [[${user.about}]]
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 mb-2">
+              <strong>Phone Number:</strong> [[${user.phoneNumber}]]
+            </p>
+          </div>
+          <div class="border-t p-4 dark:border-gray-700">
+            <p class="text-gray-600 dark:text-gray-400 mb-2">
+              <strong>Email Verified:</strong>
+              <span th:text="${user.emailVerified} ? 'Yes' : 'No'"></span>
+            </p>
+            <p class="text-gray-600 dark:text-gray-400 mb-2">
+              <strong>Phone Verified:</strong>
+              <span th:text="${user.phoneVerified} ? 'Yes' : 'No'"></span>
+            </p>
+            <p class="text-gray-600 dark:text-gray-400">
+              <strong>Provider:</strong> [[${user.provider}]]
+            </p>
+          </div>
+          <div class="p-4 text-center">
+            <a
+              data-th-href="@{'/user/edit'}"
+              id="edit_button"
+              class="bg-white dark:bg-gray-700 text-blue-500 dark:text-gray-300 font-semibold py-2 px-4 rounded hover:bg-blue-700 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition-colors duration-300"
+            >
+              Edit Profile
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script></script>
+  </body>
+</html>

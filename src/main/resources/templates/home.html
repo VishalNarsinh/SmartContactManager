@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}"
+>
+  <head>
+    <title>Home</title>
+  </head>
+  <body>
+    <div id="content" class="border dark:bg-gray-900 dark:text-gray-100">
+      <!-- Banner Section -->
+      <section
+        class="bg-blue-700 text-white pt-24 pb-4 animate__animated animate__fadeInDown dark:bg-blue-900"
+      >
+        <div class="container mx-auto text-center">
+          <h2 class="text-5xl font-extrabold mb-6">
+            Welcome to Contact Manager
+          </h2>
+          <p class="text-xl mb-10">
+            Manage all your contacts effortlessly and securely in one place.
+          </p>
+          <a
+            th:href="@{'/signup'}"
+            class="bg-white text-blue-700 px-8 py-4 rounded-full font-semibold shadow-lg hover:bg-gray-200 transition duration-300 mb-8 inline-block dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
+          >
+            Get Started
+          </a>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="py-24 bg-gray-50 dark:bg-gray-800 dark:text-gray-200">
+        <div class="container mx-auto text-center">
+          <h2 class="text-4xl font-bold animate__animated animate__fadeInUp">
+            Features
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-10">
+            <div
+              class="p-8 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105 dark:bg-gray-700 dark:text-gray-200"
+            >
+              <i
+                class="fas fa-address-book text-blue-700 text-5xl mb-6 dark:text-blue-400"
+              ></i>
+              <h3 class="text-2xl font-semibold mb-4">
+                Easy Contact Management
+              </h3>
+              <p class="text-gray-700 dark:text-gray-300">
+                Add, edit, and organize your contacts in a user-friendly
+                interface.
+              </p>
+            </div>
+            <div
+              class="p-8 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105 dark:bg-gray-700 dark:text-gray-200"
+            >
+              <i
+                class="fas fa-lock text-blue-700 text-5xl mb-6 dark:text-blue-400"
+              ></i>
+              <h3 class="text-2xl font-semibold mb-4">Secure Storage</h3>
+              <p class="text-gray-700 dark:text-gray-300">
+                Your data is protected with top-level encryption and security
+                measures.
+              </p>
+            </div>
+            <div
+              class="p-8 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105 dark:bg-gray-700 dark:text-gray-200"
+            >
+              <i
+                class="fas fa-globe text-blue-700 text-5xl mb-6 dark:text-blue-400"
+              ></i>
+              <h3 class="text-2xl font-semibold mb-4">24/7 Access</h3>
+              <p class="text-gray-700 dark:text-gray-300">
+                Access your contacts anytime, anywhere from any device.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action Section -->
+      <section
+        class="bg-blue-700 text-white pt-24 pb-4 animate__animated animate__fadeInUp dark:bg-blue-900"
+      >
+        <div class="container mx-auto text-center">
+          <h2 class="text-4xl font-bold mb-6">
+            Ready to Manage Your Contacts?
+          </h2>
+          <p class="text-xl mb-10">
+            Sign up today and experience the easiest way to manage your
+            contacts.
+          </p>
+          <a
+            th:href="@{'/signup'}"
+            class="bg-white text-blue-700 px-8 py-4 rounded-full font-semibold shadow-lg hover:bg-gray-200 transition duration-300 mb-8 inline-block dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
+          >
+            Create an Account
+          </a>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section class="py-24 bg-gray-50 dark:bg-gray-800 dark:text-gray-200">
+        <div class="container mx-auto text-center">
+          <h2 class="text-4xl font-bold animate__animated animate__fadeInUp">
+            What Our Users Say
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-10">
+            <div
+              class="p-8 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105 dark:bg-gray-700 dark:text-gray-200"
+            >
+              <p class="text-gray-700 italic dark:text-gray-300">
+                "Contact Manager has changed the way I organize my contacts.
+                It's fast, secure, and incredibly easy to use!"
+              </p>
+              <h4 class="text-xl font-semibold mt-6">- John Doe</h4>
+            </div>
+            <div
+              class="p-8 bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 transform hover:scale-105 dark:bg-gray-700 dark:text-gray-200"
+            >
+              <p class="text-gray-700 italic dark:text-gray-300">
+                "A fantastic app with great features! I love the 24/7 access and
+                secure storage options."
+              </p>
+              <h4 class="text-xl font-semibold mt-6">- Jane Smith</h4>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section
+        class="py-24 bg-gray-100 animate__animated animate__fadeInUp dark:bg-gray-900"
+      >
+        <div class="container mx-auto text-center">
+          <h2 class="text-4xl font-bold">Get in Touch</h2>
+          <form class="max-w-lg mx-auto">
+            <input
+              type="text"
+              placeholder="Your Name"
+              class="w-full px-4 py-3 mt-6 mb-6 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 dark:bg-gray-800 dark:text-white dark:border-gray-600"
+            />
+            <input
+              type="email"
+              placeholder="Your Email"
+              class="w-full px-4 py-3 mb-6 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 dark:bg-gray-800 dark:text-white dark:border-gray-600"
+            />
+            <textarea
+              placeholder="Your Message"
+              class="w-full px-4 py-3 mb-6 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 dark:bg-gray-800 dark:text-white dark:border-gray-600"
+            ></textarea>
+            <button
+              type="submit"
+              class="bg-blue-700 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:bg-blue-800 transition duration-300 dark:bg-blue-900 dark:hover:bg-blue-800"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Footer Section -->
+      <footer
+        class="bg-gray-900 text-white py-8 dark:bg-gray-800 dark:text-gray-300"
+      >
+        <div class="container mx-auto text-center">
+          <p>&copy; 2024 Contact Manager. All rights reserved.</p>
+          <p>
+            Follow us on <a href="#" class="text-blue-400">Facebook</a>,
+            <a href="#" class="text-blue-400">Twitter</a>, and
+            <a href="#" class="text-blue-400">Instagram</a>.
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      console.log("Home page");
+    </script>
+  </body>
+</html>
